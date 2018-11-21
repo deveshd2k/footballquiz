@@ -1,0 +1,65 @@
+@font-face {
+  font-family:"Hurme Geometric Sans 4";
+  src: url("fonts/HurmeGeometricSans4 Bold.e7b693f1f647.otf")format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir LT Std";
+  src: url("fonts/AvenirLTStd-Medium.4f995fa49446.otf")format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  box-sizing: border-box;
+  background-image: url("images/football.abbc876b0607.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+.content{
+	text-align: center;
+	color: white;
+  margin-top: 180px;
+}
+.content h1{
+	font-family:"Hurme Geometric Sans 4";
+	font-size: 60px;
+	margin: 0;
+}
+.content p{
+	font-family:"Hurme Geometric Sans 4";
+	font-size: 40px;
+	margin: 0;
+}
+.button-container{
+	display: flex;
+	justify-content: center;
+  padding: 10px 0;
+}
+.button{
+  font-family:"Avenir LT Std";
+  background: none;
+  color: white;
+  border-radius: 100px;
+  padding: 10px 40px;
+  cursor: pointer;
+  font-size: 30px;
+  margin: 10px;
+  outline: none;
+  border: 2px solid white;
+}
+.button:hover{
+  background-color: #0d2101;
+  transition: 0.2s ease;
+}
+.footer{
+  text-align: center;
+  background-color: rgba(13,33,1,0.6);
+  color: white;
+  font-family:"Avenir LT Std";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0px;
+}

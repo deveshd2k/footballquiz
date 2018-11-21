@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<title>Register</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{% static 'register_css.css' %}" />
+</head>
+<body>
+	{% block content %}
+	<div class="heading">
+		<h1>REGISTER HERE</h1>
+	</div>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="container">
+    	<span class="content"><label>Enter Username</label></span>
+        {% for error in form.username.errors %}
+            <br><label class="error">{{ error }}  </label>
+        {% endfor %}
+       	<input class="values" type="text" name="username" placeholder="Enter username" required autocomplete="off" />
+	</div>
+    <div class="container">
+    	<span class="content"><label>Enter Password</label></span>
+        {% for error in form.password2.errors %}
+            <br><label class="error">{{ error }}  </label>
+        {% endfor %}        
+    	<input class="values" type="Password" name="password1" placeholder="Enter Password" required />
+    </div>
+    <div class="container">
+    	<span class="content"><label>Enter Password Again</label></span>
+    	<input class="values" type="Password" name="password2" placeholder="Enter Password Again" required />
+    </div>
+    <div class="button-container">
+        <button class="button" type="submit">Register</button>
+    </div>
+  </form>
+	{% endblock %}
+</body>
+</html>

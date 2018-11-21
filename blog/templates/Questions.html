@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<title>The football quiz</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'Questions_css.css' %}">
+<script src="{% static 'Questions_js.js' %}" type="text/javascript"></script>
+</head>
+<body onload="startTimer()">
+  <div class="background">
+    <div class="heading">
+      <div class="title"><h1>The Football Quiz</h1></div>
+      <div class="timer" id="timer">
+      </div>
+    </div>
+    <div class="content">
+      <div class="quiz-content">
+        <div class="question" id="question">
+          Which of among is the richest football club?
+        </div>
+        <div class="choices">
+          <form action="#">
+            <p>
+              <input type="radio" id="choice1" name="radio-group">
+              <label id="label1" for="choice1">Bayern Munich</label>
+            </p>
+            <p>
+              <input type="radio" id="choice2" name="radio-group">
+              <label id="label2" for="choice2">Manchester United</label>
+            </p>
+            <p>
+              <input type="radio" id="choice3" name="radio-group">
+              <label id="label3" for="choice3">Chelsea</label>
+            </p>
+            <p>
+              <input type="radio" id="choice4" name="radio-group">
+              <label id="label4" for="choice4">Juventus</label>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="img" id="img">
+      </div>
+    </div>
+    <div class="btn-container">
+      <button class="check" onclick="checkIt()" id="check" data-toggle="modal">Check my answer</button>
+      <button class="next" id="over">Next</button>
+      <button class="next" id="next" disabled onclick="nextQuestion()">Next</button>
+      <button class="quit" data-toggle="modal" data-target="#myModal">Quit</button>
+    </div>
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="color:#1b4602;">Are you sure you want to quit?</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="yes_no">
+              <a href="#" onClick="document.getElementById('logoutform').submit()" id="quit" class="btn" style="background-color:#1b4602;color:white;">Yes</a>
+              <form id="logoutform" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type="hidden">
+              </form>
+              <a class="btn" style="background-color:#1b4602;color:white;" data-dismiss="modal">No</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="overModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="final-score" style="color:#1b4602; font-family:'Avenir LT Std';"></h4>
+            <a href="{% url 'kickoff' %}" class="close">&times;</a>
+          </div>
+          <div class="modal-body" id="body-duplicate" style="font-size:20px; font-family:'Avenir LT Std';"></div>
+          <div class="modal-body" style="font-size:20px; font-family:'Avenir LT Std';">
+            Thank you for playing!
+          </div>
+          <div class="modal-footer">
+            <a href="{% url 'kickoff' %}" class="btn" style="background-color:#1b4602;color:white;">Close</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

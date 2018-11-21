@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <title>Welcome {{request.user.username}}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'quiz_css.css' %}" />
+<script src="{% static 'Questions_js.js' %}"></script>
+</head>
+<body>
+  <div class="background">
+<nav class="navbar navbar-expand-sm">
+  <!-- Brand -->
+  <span class="navbar-brand">The Football Quiz</span>
+
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        {{request.user.username}}
+      </a>
+      <div class="dropdown-menu">
+          <a href="#" class="dropdown-item" onClick="document.getElementById('logoutform').submit()">Logout</a>
+          <a href="#" class="dropdown-item" data-toggle="modal" data-target="#myModal">My Profile</a>
+          <form id="logoutform" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input type="hidden">
+          </form>
+      </div>
+    </li>
+  </ul>
+</nav>
+  <div class="content">
+    <div class="kickoff">
+      <a href="{% url 'questions' %}"><button class="button" id="start"><i class="fa fa-soccer-ball-o"></i>Kick OFF!</button></a>
+    </div>
+    <div class="instructions">
+    <h1>INSTRUCTIONS</h1>
+    <ul>
+      <li>Total 20 questions to answer</li>
+      <li>Four options will be given</li>
+      <li>Question must be answered within 15 seconds</li>
+      <li>1 point will be awarded for each correct answer</li>
+      <li>If you quit at any time, no score will be awarded</li>
+      <li>Timer is located at the topright corner</li>
+    </ul>
+    </div>
+  </div>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4>Profile</h4>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="content-1">
+            <div>Username:</div>
+            <div>{{ request.user.username }}</div>
+          </div>
+          <div class="content-1">
+            <div>Recent Score:</div>
+            <div>{{ score }}</div>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

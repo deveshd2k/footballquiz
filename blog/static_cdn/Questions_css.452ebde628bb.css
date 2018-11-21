@@ -1,0 +1,178 @@
+@font-face {
+  font-family:"Hurme Geometric Sans 4";
+  src: url("fonts/HurmeGeometricSans4 Bold.e7b693f1f647.otf")format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir LT Std";
+  src: url("fonts/AvenirLTStd-Medium.4f995fa49446.otf")format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  box-sizing: border-box;
+  margin: 0;
+}
+.background{
+  background-image: url("images/football.abbc876b0607.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height:100vh;
+}
+.heading{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(13,33,1,0.6);
+}
+.title{
+  margin: 20px;
+}
+.title h1{
+  font-size: 40px;
+  font-family:"Hurme Geometric Sans 4";
+  color: white;
+  margin: 0;
+}
+.timer{
+  margin:20px 20px 0px 20px;
+  color: white;
+  font-family:"Avenir LT Std";
+  font-size: 30px;
+}
+.content{
+  display: flex;
+}
+.quiz-content{
+  width:60%;
+  margin: 10px;
+}
+.img{
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 380px;
+  width: 40%;
+  margin: 10px;
+  display: none;
+  border: none;
+}
+.question{
+  margin: 10px;
+  color: white;
+  font-size: 25px;
+  font-family:"Avenir LT Std";
+  padding: 10px 40px;
+}
+.choices{
+  margin: 10px;
+  color: white;
+  font-family:"Avenir LT Std";
+  padding: 20px 40px;
+}
+input[type='radio']:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: white;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+  outline:none;
+}
+input[type='radio']:checked:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #1b4602;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+  outline:none;
+}
+input[type='radio']:focus{
+  outline: none;
+}
+label{
+  font-size: 25px;
+  padding-left: 20px;
+}
+.btn-container{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 20px;
+}
+.check,.quit,.next{
+  font-family:"Avenir LT Std";
+  background: none;
+  color: white;
+  border-radius: 40px;
+  padding: 0px 20px;
+  cursor: pointer;
+  font-size: 22px;
+  border: 1px solid white;
+  margin: 20px;
+}
+.check:hover,.quit:hover,.next:hover{
+  background-color: #0d2101;
+  transition: 0.2s ease;
+}
+.check:focus,.quit:focus,.next:focus{
+  outline: none;
+}
+.next:disabled{
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+#over{
+  display: none;
+}
+.yes_no{
+  display: flex;
+  justify-content: space-around;
+}
+@media only screen and (max-width: 768px){
+  .heading{
+    padding: 10px 0;
+    text-align: center;
+  }
+  .heading h1{
+    font-size: 30px;
+  }
+  .content{
+    flex-direction:column;
+  }
+  .quiz-content{
+    width: 100%;
+    margin: 0;
+  }
+  .question{
+    font-size: 25px;
+    padding: 0;
+    text-align: center;
+  }
+  .btn-container{
+    justify-content: center;
+    margin-top: 0;
+  }
+  .check,.quit,.next{
+    font-size: 14px;
+    padding: 10px 20px;
+    margin: 10px;
+  }
+  .img{
+    height: 200px;
+    width: 100%;
+    margin: 0;
+  }
+}

@@ -1,0 +1,30 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+<link rel="stylesheet" type="text/css" href="{% static 'login_css.css' %}" />
+</head>
+<body>
+	<div class="heading">
+		<h1>LOGIN  HERE</h1>
+	</div>
+    <form method="POST">
+        {% csrf_token %}
+        {% if form.errors %}
+            <p class="error">Wrong credentials</p>
+        {% endif %}
+        <p>
+            <label>Username</label>
+            <input type="text" name="username" required autocomplete="off" placeholder="Enter username">
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" name="password" required autocomplete="off" placeholder="Enter password">
+        </p>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
